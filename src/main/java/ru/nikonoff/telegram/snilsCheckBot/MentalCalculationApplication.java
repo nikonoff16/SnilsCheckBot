@@ -1,9 +1,9 @@
-package ru.taksebe.telegram.mentalCalculation;
+package ru.nikonoff.telegram.snilsCheckBot;
 
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
-import ru.taksebe.telegram.mentalCalculation.telegram.Bot;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.Bot;
 
 import java.util.Map;
 

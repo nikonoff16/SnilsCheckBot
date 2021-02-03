@@ -1,11 +1,11 @@
-package ru.taksebe.telegram.mentalCalculation.telegram.commands.service;
+package ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import ru.taksebe.telegram.mentalCalculation.Utils;
+import ru.nikonoff.telegram.snilsCheckBot.Utils;
 
 /**
  * Команда "Помощь"

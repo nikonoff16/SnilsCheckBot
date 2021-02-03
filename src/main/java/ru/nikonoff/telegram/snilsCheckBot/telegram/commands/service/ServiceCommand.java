@@ -1,4 +1,4 @@
-package ru.taksebe.telegram.mentalCalculation.telegram.commands.service;
+package ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

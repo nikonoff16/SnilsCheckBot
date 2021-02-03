@@ -1,19 +1,16 @@
-package ru.taksebe.telegram.mentalCalculation.telegram.commands.service;
+package ru.nikonoff.telegram.snilsCheckBot.telegram.commands.operations;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import ru.taksebe.telegram.mentalCalculation.Utils;
+import ru.nikonoff.telegram.snilsCheckBot.Utils;
 
-/**
- * Команда "Старт"
- */
-public class StartCommand extends ServiceCommand {
-    private Logger logger = LoggerFactory.getLogger(StartCommand.class);
+public class GenerateCommand extends OperationCommand {
+    private Logger logger = LoggerFactory.getLogger(GenerateCommand.class);
 
-    public StartCommand(String identifier, String description) {
+    public GenerateCommand(String identifier, String description) {
         super(identifier, description);
     }
 
@@ -23,8 +20,8 @@ public class StartCommand extends ServiceCommand {
 
         logger.debug(String.format("Пользователь %s. Начато выполнение команды %s", userName,
                 this.getCommandIdentifier()));
-        sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
-                "Давайте начнём! Если Вам нужна помощь, нажмите /help");
+        sendAnswer(absSender, chat.getId(), this.getDescription(),
+                this.getCommandIdentifier(), userName);
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

@@ -1,4 +1,4 @@
-package ru.taksebe.telegram.mentalCalculation.telegram;
+package ru.nikonoff.telegram.snilsCheckBot.telegram;
 
 import lombok.Getter;
 import org.slf4j.Logger;
@@ -8,15 +8,14 @@ import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import ru.taksebe.telegram.mentalCalculation.Utils;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.operations.MinusCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.operations.PlusCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.operations.PlusMinusCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.service.HelpCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.service.SettingsCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.commands.service.StartCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.nonCommand.NonCommand;
-import ru.taksebe.telegram.mentalCalculation.telegram.nonCommand.Settings;
+import ru.nikonoff.telegram.snilsCheckBot.Utils;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.commands.operations.GenerateCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.commands.operations.ShowInfoCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service.HelpCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service.SettingsCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service.StartCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.nonCommand.NonCommand;
+import ru.nikonoff.telegram.snilsCheckBot.telegram.nonCommand.Settings;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,22 +39,21 @@ public final class Bot extends TelegramLongPollingCommandBot {
     @Getter
     private static Map<Long, Settings> userSettings;
 
+
     public Bot(String botName, String botToken) {
         super();
         logger.debug("Конструктор суперкласса отработал");
         this.BOT_NAME = botName;
         this.BOT_TOKEN = botToken;
-        logger.debug("Имя и токен присвоены");
         this.nonCommand = new NonCommand();
         logger.debug("Класс обработки сообщения, не являющегося командой, создан");
+        logger.debug("Имя и токен присвоены");
         register(new StartCommand("start", "Старт"));
         logger.debug("Команда start создана");
-        register(new PlusCommand("plus", "Сложение"));
-        logger.debug("Команда plus создана");
-        register(new MinusCommand("minus", "Вычитание"));
-        logger.debug("Команда minus создана");
-        register(new PlusMinusCommand("plusminus", "Сложение и вычитание"));
-        logger.debug("Команда plusminus создана");
+        register(new GenerateCommand("generate", "Создание псевдо-СНИЛСа"));
+        logger.debug("Команда generate создана");
+        register(new ShowInfoCommand("showInfo", "Вывод всей информации о СНИЛС"));
+        logger.debug("Команда showInfo создана");
         register(new HelpCommand("help","Помощь"));
         logger.debug("Команда help создана");
         register(new SettingsCommand("settings", "Мои настройки"));

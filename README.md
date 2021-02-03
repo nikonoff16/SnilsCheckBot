@@ -56,12 +56,12 @@ mvn clean install
 //далее для Windows
 set BOT_NAME=<имя бота>
 set BOT_TOKEN=<токен бота>
-java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -cp ./target/classes;./target/dependency/* ru.taksebe.telegram.mentalCalculation.MentalCalculationApplication
+java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -cp ./target/classes;./target/dependency/* MentalCalculationApplication
 
 //далее для Linux
 export BOT_NAME=<имя бота>
 export BOT_TOKEN=<токен бота>
-java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -cp ./target/classes:./target/dependency/* ru.taksebe.telegram.mentalCalculation.MentalCalculationApplication
+java -Xmx300m -Xss512k -XX:CICompilerCount=2 -Dfile.encoding=UTF-8 -cp ./target/classes:./target/dependency/* MentalCalculationApplication
 ```
 
 ## Порядок развёртывания на heroku

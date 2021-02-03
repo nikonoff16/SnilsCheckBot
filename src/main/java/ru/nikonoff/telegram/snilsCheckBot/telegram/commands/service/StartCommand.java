@@ -1,22 +1,19 @@
-package ru.taksebe.telegram.mentalCalculation.telegram.commands.operations;
+package ru.nikonoff.telegram.snilsCheckBot.telegram.commands.service;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import ru.taksebe.telegram.mentalCalculation.Utils;
-import ru.taksebe.telegram.mentalCalculation.enums.OperationEnum;
-
-import java.util.Collections;
+import ru.nikonoff.telegram.snilsCheckBot.Utils;
 
 /**
- * Команда получение файла с заданиями на вычитание
+ * Команда "Старт"
  */
-public class MinusCommand extends OperationCommand {
-    private Logger logger = LoggerFactory.getLogger(MinusCommand.class);
+public class StartCommand extends ServiceCommand {
+    private Logger logger = LoggerFactory.getLogger(StartCommand.class);
 
-    public MinusCommand(String identifier, String description) {
+    public StartCommand(String identifier, String description) {
         super(identifier, description);
     }
 
@@ -26,8 +23,8 @@ public class MinusCommand extends OperationCommand {
 
         logger.debug(String.format("Пользователь %s. Начато выполнение команды %s", userName,
                 this.getCommandIdentifier()));
-        sendAnswer(absSender, chat.getId(), Collections.singletonList(OperationEnum.SUBTRACTION), this.getDescription(),
-                this.getCommandIdentifier(), userName);
+        sendAnswer(absSender, chat.getId(), this.getCommandIdentifier(), userName,
+                "Давайте начнём! Если Вам нужна помощь, нажмите /help");
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }

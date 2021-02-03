@@ -1,22 +1,16 @@
-package ru.taksebe.telegram.mentalCalculation.telegram.commands.operations;
+package ru.nikonoff.telegram.snilsCheckBot.telegram.commands.operations;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.telegram.telegrambots.meta.api.objects.Chat;
 import org.telegram.telegrambots.meta.api.objects.User;
 import org.telegram.telegrambots.meta.bots.AbsSender;
-import ru.taksebe.telegram.mentalCalculation.Utils;
-import ru.taksebe.telegram.mentalCalculation.enums.OperationEnum;
+import ru.nikonoff.telegram.snilsCheckBot.Utils;
 
-import java.util.Collections;
+public class ShowInfoCommand extends OperationCommand {
+    private Logger logger = LoggerFactory.getLogger(ShowInfoCommand.class);
 
-/**
- * Команда получение файла с заданиями на сложение
- */
-public class PlusCommand extends OperationCommand {
-    private Logger logger = LoggerFactory.getLogger(PlusCommand.class);
-
-    public PlusCommand(String identifier, String description) {
+    public ShowInfoCommand(String identifier, String description) {
         super(identifier, description);
     }
 
@@ -26,7 +20,7 @@ public class PlusCommand extends OperationCommand {
 
         logger.debug(String.format("Пользователь %s. Начато выполнение команды %s", userName,
                 this.getCommandIdentifier()));
-        sendAnswer(absSender, chat.getId(), Collections.singletonList(OperationEnum.ADDITION), this.getDescription(),
+        sendAnswer(absSender, chat.getId(), this.getDescription(),
                 this.getCommandIdentifier(), userName);
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
