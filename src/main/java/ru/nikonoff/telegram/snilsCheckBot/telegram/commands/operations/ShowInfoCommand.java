@@ -20,8 +20,8 @@ public class ShowInfoCommand extends OperationCommand {
 
         logger.debug(String.format("Пользователь %s. Начато выполнение команды %s", userName,
                 this.getCommandIdentifier()));
-        sendAnswer(absSender, chat.getId(), this.getDescription(),
-                this.getCommandIdentifier(), userName);
+        sendAnswer(absSender, chat.getId(),
+                this.getCommandIdentifier(), userName, "ТЕСТ ТЕСТ ТЕСТ");
         logger.debug(String.format("Пользователь %s. Завершено выполнение команды %s", userName,
                 this.getCommandIdentifier()));
     }
