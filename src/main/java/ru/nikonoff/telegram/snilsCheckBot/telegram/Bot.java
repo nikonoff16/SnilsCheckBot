@@ -52,7 +52,7 @@ public final class Bot extends TelegramLongPollingCommandBot {
         logger.debug("Команда start создана");
         register(new GenerateCommand("generate", "Создание псевдо-СНИЛСа"));
         logger.debug("Команда generate создана");
-        register(new ShowInfoCommand("showInfo", "Вывод всей информации о СНИЛС"));
+        register(new ShowInfoCommand("showinfo", "Вывод всей информации о СНИЛС"));
         logger.debug("Команда showInfo создана");
         register(new HelpCommand("help","Помощь"));
         logger.debug("Команда help создана");

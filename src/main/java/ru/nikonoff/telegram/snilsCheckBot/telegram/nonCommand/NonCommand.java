@@ -2,6 +2,7 @@ package ru.nikonoff.telegram.snilsCheckBot.telegram.nonCommand;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import ru.nikonoff.telegram.snilsCheckBot.SnilsCheck;
 import ru.nikonoff.telegram.snilsCheckBot.exceptions.IllegalSettingsException;
 import ru.nikonoff.telegram.snilsCheckBot.telegram.Bot;
 
@@ -20,16 +21,23 @@ public class NonCommand {
         try {
             logger.debug(String.format("Пользователь %s. Пробуем создать объект настроек из сообщения \"%s\"",
                     userName, text));
+            // Унаследованный код. Понять, как работает, и удалить
             settings = createSettings(text);
             saveUserSettings(chatId, settings);
-            logger.debug(String.format("Пользователь %s. Объект настроек из сообщения \"%s\" создан и сохранён",
+
+            // Обработка простого запроса проверки СНИЛС
+            SnilsCheck snils = new SnilsCheck();
+            snils.setSnils(text);
+            Boolean checkResult = snils.getSnilsValid();
+
+            logger.debug(String.format("Пользователь %s. СНИЛС номер \"%s\" проверен и сохранен в объекте",
                     userName, text));
-            answer = "Настройки обновлены. Вы всегда можете их посмотреть с помощью /settings";
-        } catch (IllegalSettingsException e) {
-            logger.debug(String.format("Пользователь %s. Не удалось создать объект настроек из сообщения \"%s\". " +
-                    "%s", userName, text, e.getMessage()));
-            answer = e.getMessage() +
-                    "\n\n❗ Настройки не были изменены. Вы всегда можете их посмотреть с помощью /settings";
+            if (checkResult) {
+                answer = text + " - СНИЛС валиден!";
+            }
+            else {
+                answer = text + " не прошел проверку";
+            }
         } catch (Exception e) {
             logger.debug(String.format("Пользователь %s. Не удалось создать объект настроек из сообщения \"%s\". " +
                     "%s. %s", userName, text, e.getClass().getSimpleName(), e.getMessage()));
