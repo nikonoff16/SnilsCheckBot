@@ -7,7 +7,7 @@ import ru.nikonoff.telegram.snilsCheckBot.telegram.Bot;
 
 import java.util.Map;
 
-public class MentalCalculationApplication {
+public class SnilsCheckBotApplication {
     private static final Map<String, String> getenv = System.getenv();
 
     public static void main(String[] args) {
