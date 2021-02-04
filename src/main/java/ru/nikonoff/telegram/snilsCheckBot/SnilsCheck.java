@@ -106,7 +106,8 @@ public class SnilsCheck {
         // Метод принимает строку СНИЛС, разбивает ее на тело и контрольную сумму
         // затем возвращает массив с этими значениями
         String[] result = new String[2];
-        snilsNumber = snilsNumber.trim();
+        snilsNumber = snilsNumber.replaceAll("[^0-9]", "");
+
         // Проверка длины СНИЛСа
         if (snilsNumber.length() != 11) {
             result[0] = "";

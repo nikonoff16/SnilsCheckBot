@@ -19,12 +19,8 @@ public class NonCommand {
         Settings settings;
         String answer;
         try {
-            logger.debug(String.format("Пользователь %s. Пробуем создать объект настроек из сообщения \"%s\"",
+            logger.debug(String.format("Пользователь %s. Пробуем создать объект СНИЛС из сообщения \"%s\"",
                     userName, text));
-            // Унаследованный код. Понять, как работает, и удалить
-//            settings = createSettings(text);
-//            saveUserSettings(chatId, settings);
-
             // Обработка простого запроса проверки СНИЛС
             SnilsCheck snils = new SnilsCheck();
             snils.setSnils(text);
